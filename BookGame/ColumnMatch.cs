@@ -13,6 +13,8 @@ using System.Windows.Forms;
 //This is for the music player
 using WMPLib;
 
+//chatGpt was used to implement lectuere feedback
+//link: https://chat.openai.com/c/d50a86c9-c41b-41b5-8ca2-514ac36b4ea0
 namespace BookGame
 {
     public partial class ColumnMatch : Form
@@ -60,7 +62,6 @@ namespace BookGame
             //this snip cam from YouTube
             //the channel is Dew Clarke
             // video link: https://youtu.be/6AVghOqSYUs?si=wnocx35hZGQ7cXRs
-            player.URL = "y2mate.com - Sad trombone Sound effect.mp3";
             player2.URL = "y2mate.com - 5 MINUTES OF No Copyright Music CHILL LOFI HIP HOP BEAT Royalty free.mp3";
             
             //this will shuffle the call numbers and descriptions
@@ -70,6 +71,16 @@ namespace BookGame
             ScoreLB.Text = $"Score: {score}";
             LoadGame();
         }
+
+        private void PlayBuzzSound()
+        {
+            //this are the media players that will play the music in the game
+            // this will allow the media player to play the song
+            //this snip cam from YouTube
+            //the channel is Dew Clarke
+            // video link: https://youtu.be/6AVghOqSYUs?si=wnocx35hZGQ7cXRs
+            player.URL = "y2mate.com - Sad trombone Sound effect.mp3";
+        }
         //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
         /// <summary>
         /// This is the load method that will take care of loading the game functions
@@ -78,7 +89,7 @@ namespace BookGame
         {
             //this will clear the boxes of any duplicates
             CallNumbersListBox.Items.Clear();
-            DescriptionListBox.Items.Clear();
+            
             userSelections.Clear();
 
             // Shuffle the call numbers
@@ -91,22 +102,19 @@ namespace BookGame
                 CallNumbersListBox.Items.Add(selectedCallNumber);
             }
 
-            // Shuffle the descriptions
-            List<string> descriptions = callNumbers.Values.ToList();
+            // Use var and this where appropriate
+            var descriptions = callNumbers.Values.ToList();
             descriptions.Shuffle();
 
-            // Select the first four descriptions as correct answers
-            List<string> correctDescriptions = descriptions.Take(4).ToList();
-
-            // Select three more random descriptions as incorrect answers
-            List<string> incorrectDescriptions = descriptions.Except(correctDescriptions).ToList();
+            var correctDescriptions = descriptions.Take(4).ToList();
+            var incorrectDescriptions = descriptions.Except(correctDescriptions).ToList();
             incorrectDescriptions.Shuffle();
             incorrectDescriptions = incorrectDescriptions.Take(3).ToList();
 
-            // Combine correct and incorrect descriptions and shuffle them
-            List<string> combinedDescriptions = correctDescriptions.Concat(incorrectDescriptions).ToList();
+            var combinedDescriptions = correctDescriptions.Concat(incorrectDescriptions).ToList();
             combinedDescriptions.Shuffle();
 
+            DescriptionListBox.Items.Clear();
             DescriptionListBox.Items.AddRange(combinedDescriptions.ToArray());
         }
 //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
@@ -155,11 +163,12 @@ namespace BookGame
 
             for (int i = 0; i < 4; i++)
             {
-                string selectedCallNumber = CallNumbersListBox.Items[i].ToString();
-                string userSelectedDescription = userSelections[selectedCallNumber];
+                var selectedCallNumber = CallNumbersListBox.Items[i].ToString();
+                var userSelectedDescription = userSelections[selectedCallNumber];
 
                 if (callNumbers.ContainsKey(selectedCallNumber) && callNumbers[selectedCallNumber] == userSelectedDescription)
                     correctCount++;
+
                 score++; // Increment the score
                 ScoreLB.Text = $"Score: {score}"; // Update the score label
             }
@@ -188,7 +197,7 @@ namespace BookGame
             {
                 // Stop the timer
                 gameTimer.Stop();
-                player.controls.play();
+                PlayBuzzSound();
                 player2.controls.stop();
 
                 // Display a message box indicating that the user has lost
@@ -234,18 +243,23 @@ namespace BookGame
 /// <param name="e"></param>
         private void BackBT_Click(object sender, EventArgs e)
         {
-            //this method was modified by YouTube
-            //the channel is Code Conclusion
-            //link to video: https://youtu.be/6AVghOqSYUs?si=spFgskdkpnS5H3Cd
-            Form1 form1 = new Form1();
-            form1.Show();
-            Visible = false;
+            // Display a confirmation message box
+            DialogResult result = MessageBox.Show("Are you sure you want to go back to the Home page? ", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            // Check the user's choice
+            if (result == DialogResult.OK)
+            {
+                //this method was modified by YouTube
+                //the channel is Code Conclusion
+                //link to video: https://youtu.be/6AVghOqSYUs?si=spFgskdkpnS5H3Cd
+                Form1 form1 = new Form1();
+                form1.Show();
+                Visible = false;
+                //stops the background music being played
+                player2.controls.stop();
 
-            //stops the background music being played
-            player2.controls.stop();
-            
-            //stop the timer when you leave the game
-            gameTimer.Stop();
+                //stop the timer when you leave the game
+                gameTimer.Stop();
+            }
         }
 //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
 /// <summary>
@@ -261,6 +275,46 @@ namespace BookGame
             //disable the maximize feature
             MaximizeBox = false;
 
+        }
+
+        /// <summary>
+        /// Explains the game to the user
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void AboutBT_Click(object sender, EventArgs e)
+        {
+            //inform the user on how to play .
+            MessageBox.Show("About Column match " + Environment.NewLine +
+                "----------------------------------------------------------------------" + Environment.NewLine +
+                "You need to choose the correct pair of call numbers with its Description " + Environment.NewLine +
+                "Here is an exampl: " + Environment.NewLine +
+                "\r\n100 Philosophy and Psychology" +
+                "\r\n200 Religion" +
+                "\r\n000 General" +
+                "\r\n400 Language" +
+                "\r\n700 Arts & Recreation" +
+                "\r\n800 Literature " + Environment.NewLine +
+                "Click the ok button to proceed to the game and have fun. ");
+        }
+
+        /// <summary>
+        /// close the application
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CloseBT_Click(object sender, EventArgs e)
+        {
+            // Display a confirmation message box
+            DialogResult result = MessageBox.Show("Are you sure you want to exit? All progress will be lost.", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+
+            // Check the user's choice
+            if (result == DialogResult.OK)
+            {
+                // User clicked OK, close the application
+                Application.Exit();
+            }
+            
         }
     }
     //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//

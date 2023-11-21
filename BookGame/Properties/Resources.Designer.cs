@@ -63,6 +63,16 @@ namespace BookGame.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Exitbt {
+            get {
+                object obj = ResourceManager.GetObject("Exitbt", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap FindingCallNumbersButton {
             get {
                 object obj = ResourceManager.GetObject("FindingCallNumbersButton", resourceCulture);

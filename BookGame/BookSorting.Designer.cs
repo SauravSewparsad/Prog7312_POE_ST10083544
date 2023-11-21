@@ -36,15 +36,17 @@
             this.CheckBT = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.HomePageBT = new System.Windows.Forms.Button();
+            this.CloseBT = new System.Windows.Forms.Button();
+            this.AboutBT = new System.Windows.Forms.Button();
             animationTimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // PlayBT
             // 
             this.PlayBT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.PlayBT.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.PlayBT.BackColor = System.Drawing.Color.GreenYellow;
             this.PlayBT.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.PlayBT.Location = new System.Drawing.Point(399, 487);
+            this.PlayBT.Location = new System.Drawing.Point(101, 487);
             this.PlayBT.Name = "PlayBT";
             this.PlayBT.Size = new System.Drawing.Size(171, 53);
             this.PlayBT.TabIndex = 1;
@@ -64,9 +66,9 @@
             // SortBT
             // 
             this.SortBT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.SortBT.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.SortBT.BackColor = System.Drawing.Color.GreenYellow;
             this.SortBT.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.SortBT.Location = new System.Drawing.Point(819, 487);
+            this.SortBT.Location = new System.Drawing.Point(644, 487);
             this.SortBT.Name = "SortBT";
             this.SortBT.Size = new System.Drawing.Size(165, 53);
             this.SortBT.TabIndex = 4;
@@ -77,9 +79,9 @@
             // CheckBT
             // 
             this.CheckBT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CheckBT.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.CheckBT.BackColor = System.Drawing.Color.GreenYellow;
             this.CheckBT.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.CheckBT.Location = new System.Drawing.Point(1145, 487);
+            this.CheckBT.Location = new System.Drawing.Point(1052, 487);
             this.CheckBT.Name = "CheckBT";
             this.CheckBT.Size = new System.Drawing.Size(165, 53);
             this.CheckBT.TabIndex = 6;
@@ -91,7 +93,7 @@
             // 
             this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.progressBar1.BackColor = System.Drawing.Color.Black;
-            this.progressBar1.Location = new System.Drawing.Point(30, 59);
+            this.progressBar1.Location = new System.Drawing.Point(42, 150);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(1209, 36);
             this.progressBar1.TabIndex = 8;
@@ -99,15 +101,44 @@
             // HomePageBT
             // 
             this.HomePageBT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.HomePageBT.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.HomePageBT.BackColor = System.Drawing.Color.Red;
             this.HomePageBT.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.HomePageBT.Location = new System.Drawing.Point(73, 487);
+            this.HomePageBT.Font = new System.Drawing.Font("Microsoft YaHei UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.HomePageBT.Location = new System.Drawing.Point(12, 12);
             this.HomePageBT.Name = "HomePageBT";
-            this.HomePageBT.Size = new System.Drawing.Size(171, 53);
+            this.HomePageBT.Size = new System.Drawing.Size(95, 53);
             this.HomePageBT.TabIndex = 9;
-            this.HomePageBT.Text = "Home";
+            this.HomePageBT.Text = "Exit";
             this.HomePageBT.UseVisualStyleBackColor = false;
             this.HomePageBT.Click += new System.EventHandler(this.HomePageBT_Click);
+            // 
+            // CloseBT
+            // 
+            this.CloseBT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.CloseBT.BackColor = System.Drawing.Color.Red;
+            this.CloseBT.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.CloseBT.Font = new System.Drawing.Font("Microsoft YaHei UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CloseBT.Location = new System.Drawing.Point(1272, 12);
+            this.CloseBT.Name = "CloseBT";
+            this.CloseBT.Size = new System.Drawing.Size(95, 53);
+            this.CloseBT.TabIndex = 10;
+            this.CloseBT.Text = "Close";
+            this.CloseBT.UseVisualStyleBackColor = false;
+            this.CloseBT.Click += new System.EventHandler(this.CloseBT_Click);
+            // 
+            // AboutBT
+            // 
+            this.AboutBT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.AboutBT.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.AboutBT.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.AboutBT.Font = new System.Drawing.Font("Microsoft YaHei UI", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AboutBT.Location = new System.Drawing.Point(249, 12);
+            this.AboutBT.Name = "AboutBT";
+            this.AboutBT.Size = new System.Drawing.Size(119, 53);
+            this.AboutBT.TabIndex = 11;
+            this.AboutBT.Text = "About";
+            this.AboutBT.UseVisualStyleBackColor = false;
+            this.AboutBT.Click += new System.EventHandler(this.AboutBT_Click);
             // 
             // BookSorting
             // 
@@ -116,6 +147,8 @@
             this.BackgroundImage = global::BookGame.Properties.Resources.LibraryBackground;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1414, 571);
+            this.Controls.Add(this.AboutBT);
+            this.Controls.Add(this.CloseBT);
             this.Controls.Add(this.HomePageBT);
             this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.CheckBT);
@@ -136,5 +169,7 @@
         private System.Windows.Forms.Button CheckBT;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.Button HomePageBT;
+        private System.Windows.Forms.Button CloseBT;
+        private System.Windows.Forms.Button AboutBT;
     }
 }

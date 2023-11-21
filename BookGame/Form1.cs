@@ -61,7 +61,13 @@ namespace BookGame
        /// <param name="e"></param>
         private void FindingCallNoBT_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("This feature is still under construction");
+            //this method was modified by YouTube
+            //the channel is Code Conclusion
+            //link to video: https://youtu.be/6AVghOqSYUs?si=spFgskdkpnS5H3Cd
+            //message box that will pop up when button is clicked
+            FindingCallNumbers findingCallNumbers = new FindingCallNumbers();
+            findingCallNumbers.Show();
+            Visible = false;
         }
     }
 }

@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.WelcomeLB = new System.Windows.Forms.Label();
             this.TimerLB = new System.Windows.Forms.Label();
             this.ScoreLB = new System.Windows.Forms.Label();
             this.CallNumbersListBox = new System.Windows.Forms.ListBox();
@@ -38,20 +37,9 @@
             this.ResetBT = new System.Windows.Forms.Button();
             this.BackBT = new System.Windows.Forms.Button();
             this.gameTimer = new System.Windows.Forms.Timer(this.components);
+            this.AboutBT = new System.Windows.Forms.Button();
+            this.CloseBT = new System.Windows.Forms.Button();
             this.SuspendLayout();
-            // 
-            // WelcomeLB
-            // 
-            this.WelcomeLB.AutoSize = true;
-            this.WelcomeLB.BackColor = System.Drawing.Color.Transparent;
-            this.WelcomeLB.Font = new System.Drawing.Font("Segoe UI Symbol", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.WelcomeLB.ForeColor = System.Drawing.Color.Black;
-            this.WelcomeLB.Location = new System.Drawing.Point(12, 9);
-            this.WelcomeLB.Name = "WelcomeLB";
-            this.WelcomeLB.Size = new System.Drawing.Size(558, 124);
-            this.WelcomeLB.TabIndex = 0;
-            this.WelcomeLB.Text = "Welcome Gamer, to the column matching game. \r\nTo begin the game and start the tim" +
-    "er press \r\nthe start or reset button\r\nEnjoy and have fun.\r\n";
             // 
             // TimerLB
             // 
@@ -161,6 +149,32 @@
             this.gameTimer.Interval = 1000;
             this.gameTimer.Tick += new System.EventHandler(this.gameTimer_Tick);
             // 
+            // AboutBT
+            // 
+            this.AboutBT.BackColor = System.Drawing.Color.LightSeaGreen;
+            this.AboutBT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.AboutBT.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.AboutBT.Location = new System.Drawing.Point(25, 12);
+            this.AboutBT.Name = "AboutBT";
+            this.AboutBT.Size = new System.Drawing.Size(143, 54);
+            this.AboutBT.TabIndex = 8;
+            this.AboutBT.Text = "About";
+            this.AboutBT.UseVisualStyleBackColor = false;
+            this.AboutBT.Click += new System.EventHandler(this.AboutBT_Click);
+            // 
+            // CloseBT
+            // 
+            this.CloseBT.BackColor = System.Drawing.Color.Red;
+            this.CloseBT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CloseBT.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CloseBT.Location = new System.Drawing.Point(231, 12);
+            this.CloseBT.Name = "CloseBT";
+            this.CloseBT.Size = new System.Drawing.Size(143, 54);
+            this.CloseBT.TabIndex = 9;
+            this.CloseBT.Text = "Close";
+            this.CloseBT.UseVisualStyleBackColor = false;
+            this.CloseBT.Click += new System.EventHandler(this.CloseBT_Click);
+            // 
             // ColumnMatch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -168,6 +182,8 @@
             this.BackgroundImage = global::BookGame.Properties.Resources.MatchingBackGround;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(993, 552);
+            this.Controls.Add(this.CloseBT);
+            this.Controls.Add(this.AboutBT);
             this.Controls.Add(this.BackBT);
             this.Controls.Add(this.ResetBT);
             this.Controls.Add(this.CheckBT);
@@ -175,7 +191,6 @@
             this.Controls.Add(this.CallNumbersListBox);
             this.Controls.Add(this.ScoreLB);
             this.Controls.Add(this.TimerLB);
-            this.Controls.Add(this.WelcomeLB);
             this.Name = "ColumnMatch";
             this.Text = "ColumnMatch";
             this.Load += new System.EventHandler(this.ColumnMatch_Load);
@@ -185,8 +200,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label WelcomeLB;
         private System.Windows.Forms.Label TimerLB;
         private System.Windows.Forms.Label ScoreLB;
         private System.Windows.Forms.ListBox CallNumbersListBox;
@@ -195,5 +208,7 @@
         private System.Windows.Forms.Button ResetBT;
         private System.Windows.Forms.Button BackBT;
         private System.Windows.Forms.Timer gameTimer;
+        private System.Windows.Forms.Button AboutBT;
+        private System.Windows.Forms.Button CloseBT;
     }
 }

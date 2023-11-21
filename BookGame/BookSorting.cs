@@ -72,9 +72,9 @@ namespace BookGame
        /// </summary>
         private void GenerateRandomBooks()
         {
-            Random random = new Random();
-            HashSet<string> usedCallNumbers = new HashSet<string>();
-            HashSet<Color> usedColors = new HashSet<Color>();
+            var random = new Random();
+            var usedCallNumbers = new HashSet<string>();
+            var usedColors = new HashSet<Color>();
 
             // Clear previously generated books.
             BottomShelfPanel.Controls.Clear();
@@ -165,7 +165,7 @@ namespace BookGame
 /// <param name="e"></param>
         private void SortBT_Click(object sender, EventArgs e)
         {
-            
+
             // Sort the books based on their random numbers (ascending order).
             books = books.OrderBy(book => book.CallNumber).ToList();
 
@@ -187,7 +187,7 @@ namespace BookGame
         private void CheckBT_Click(object sender, EventArgs e)
         {
             // Check if the current order matches the correct order.
-            bool isOrderCorrect = CheckOrder();
+            var isOrderCorrect = CheckOrder();
 
             if (isOrderCorrect)
             {
@@ -225,8 +225,8 @@ namespace BookGame
         private void BookPictureBox_DragDrop(object sender, DragEventArgs e)
         {
             // Handle the DragDrop event to rearrange the books.
-            PictureBox draggedPictureBox = (PictureBox)e.Data.GetData(typeof(PictureBox));
-            PictureBox targetPictureBox = (PictureBox)sender;
+            var draggedPictureBox = (PictureBox)e.Data.GetData(typeof(PictureBox));
+            var targetPictureBox = (PictureBox)sender;
 
             // Swap their positions in the UI.
             Point tempLocation = draggedPictureBox.Location;
@@ -295,16 +295,62 @@ namespace BookGame
        /// <param name="e"></param>
         private void HomePageBT_Click(object sender, EventArgs e)
         {
-            //this method was modified by YouTube
-            //the channel is Code Conclusion
-            //link to video: https://youtu.be/6AVghOqSYUs?si=spFgskdkpnS5H3Cd
-            Form1 form1 = new Form1();
-            form1.Show();
-            Visible = false;
+            // Display a confirmation message box
+            DialogResult result = MessageBox.Show("Are you sure you want to go back to the Home page? ", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+            // Check the user's choice
+            if (result == DialogResult.OK)
+            {
+                //this method was modified by YouTube
+                //the channel is Code Conclusion
+                //link to video: https://youtu.be/6AVghOqSYUs?si=spFgskdkpnS5H3Cd
+                Form1 form1 = new Form1();
+                form1.Show();
+                Visible = false;
 
-            //stops the background music being played
-            player.controls.stop();
+                //stops the background music being played
+                player.controls.stop();
+            }
+        }
+//---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------//
+        /// <summary>
+        /// Close the application.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void CloseBT_Click(object sender, EventArgs e)
+        {
+            // Display a confirmation message box
+            DialogResult result = MessageBox.Show("Are you sure you want to exit? All progress will be lost.", "Confirmation", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+
+            // Check the user's choice
+            if (result == DialogResult.OK)
+            {
+                // User clicked OK, close the application
+                Application.Exit();
+            }
+            // If DialogResult is Cancel, do nothing (close the message box)
+        }
+
+        /// <summary>
+        /// Inform the user about the game
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void AboutBT_Click(object sender, EventArgs e)
+        {
+            //Explain how to play the game
+            MessageBox.Show("About Book St=orting " + Environment.NewLine +
+                "----------------------------------------------------------------------" + Environment.NewLine +
+                "You need to rearrange the books in ascendind order " + Environment.NewLine +
+                "Drag and drop the book in a space between the other books " + Environment.NewLine +
+                "Then click the check button to fill the progress bar and complete the game." +
+                "\r\n The sort button is only to be used when you are stuck, if you use it" +
+                "\r\nTo cheat then it won't count towards the progess bar." +
+                "\r\nYou will then need to click the play button again to start over" 
+                 + Environment.NewLine +
+                "Click the ok button to proceed to the game and have fun. ");
         }
     }
+    
 }
 //------------------------------------------------------------ End of code ---------------------------------------------------------------------------------------------------------------------//
